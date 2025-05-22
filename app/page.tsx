@@ -23,10 +23,10 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center">
           <Container>
             <div className="max-w-2xl text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl lg:text-5xl font-bold mb-4">
                 Upgrade Your Driving Experience
               </h1>
-              <p className="text-lg md:text-xl mb-8">
+              <p className="text-lg lg:text-xl mb-8">
                 Premium performance parts, quality aftermarket components, and expert service for your vehicle.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -52,7 +52,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             What We Offer
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Performance Parts */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
               <div className="relative h-48">
@@ -154,7 +154,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             Why Choose ACM
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="bg-white/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <svg

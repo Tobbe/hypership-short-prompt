@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
 
           {/* Search Bar */}
-          <div className="hidden md:block flex-1 max-w-xl mx-8">
+          <div className="hidden lg:block flex-1 max-w-xl mx-8">
             <div className="relative">
               <input
                 type="text"
@@ -91,7 +91,7 @@ export default function Header() {
 
             {/* Mobile menu button */}
             <button
-              className="ml-4 md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              className="ml-4 lg:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
               onClick={toggleMobileMenu}
             >
               <svg
@@ -113,7 +113,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:block border-t border-gray-200">
+        <div className="hidden lg:block border-t border-gray-200">
           <MegaMenu navigation={mainNavigation} />
         </div>
 

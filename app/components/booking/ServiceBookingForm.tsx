@@ -174,7 +174,7 @@ export default function ServiceBookingForm() {
           </div>
 
           {/* Date and Time Selection */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <label
                 htmlFor="date"
@@ -242,7 +242,7 @@ export default function ServiceBookingForm() {
             <h3 className="text-lg font-medium text-gray-900 mb-3">
               Vehicle Information
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div>
                 <label
                   htmlFor="vehicleMake"
@@ -343,7 +343,7 @@ export default function ServiceBookingForm() {
             <h3 className="text-lg font-medium text-gray-900 mb-3">
               Your Information
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
                 <label
                   htmlFor="customerName"
@@ -392,7 +392,7 @@ export default function ServiceBookingForm() {
                 )}
               </div>
 
-              <div className="md:col-span-2">
+              <div className="lg:col-span-2">
                 <label
                   htmlFor="customerPhone"
                   className="block text-sm font-medium text-gray-700 mb-1"

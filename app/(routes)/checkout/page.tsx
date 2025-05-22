@@ -167,7 +167,7 @@ export default function CheckoutPage() {
                   <h2 className="text-xl font-semibold">Contact Information</h2>
                 </div>
                 <div className="p-6 space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="firstName"
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
                       )}
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="email"
@@ -285,7 +285,7 @@ export default function CheckoutPage() {
                       <p className="mt-1 text-sm text-red-600">{errors.address}</p>
                     )}
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <div>
                       <label
                         htmlFor="city"
