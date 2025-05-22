@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CartItem as CartItemType } from "@/app/types";
 import { formatPrice } from "@/app/lib/utils";
 import { useCart } from "@/app/lib/cartContext";
+import { useSettings } from "@/app/lib/settingsContext";
 
 interface CartItemProps {
   item: CartItemType;
@@ -11,6 +12,7 @@ interface CartItemProps {
 
 export default function CartItem({ item }: CartItemProps) {
   const { updateQuantity, removeItem } = useCart();
+  const { showVAT, vatRate, language } = useSettings();
   const { product, quantity } = item;
 
   const handleQuantityChange = (newQuantity: number) => {
@@ -43,7 +45,7 @@ export default function CartItem({ item }: CartItemProps) {
             : "Universal fit"}
         </p>
         <p className="mt-1 text-sm font-medium text-gray-900">
-          {formatPrice(product.price)}
+          {formatPrice(product.price, { showVAT, vatRate, language })}
         </p>
       </div>
 
@@ -112,7 +114,7 @@ export default function CartItem({ item }: CartItemProps) {
       {/* Item Total */}
       <div className="ml-6 text-right">
         <p className="text-base font-medium text-gray-900">
-          {formatPrice(product.price * quantity)}
+          {formatPrice(product.price * quantity, { showVAT, vatRate, language })}
         </p>
       </div>
 

@@ -3,6 +3,7 @@
 import { useState, Fragment } from "react";
 import Link from "next/link";
 import { NavigationCategory } from "@/app/lib/navigationData";
+import SettingsControls from "@/app/components/ui/SettingsControls";
 
 interface MobileNavigationProps {
   navigation: NavigationCategory[];
@@ -63,6 +64,12 @@ export default function MobileNavigation({
       </div>
 
       <div className="py-2 px-4 space-y-1">
+        {/* Settings Controls (VAT Toggle & Language Switcher) */}
+        <div className="py-4 border-b border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 mb-3">Settings</h3>
+          <SettingsControls />
+        </div>
+        
         {navigation.map((category) => (
           <div key={category.name} className="py-2">
             <div className="flex items-center justify-between">

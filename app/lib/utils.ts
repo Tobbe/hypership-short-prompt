@@ -1,11 +1,33 @@
 /**
  * Formats a price as a currency string
  */
-export const formatPrice = (price: number): string => {
-  return new Intl.NumberFormat('sv-SE', {
+export const formatPrice = (
+  price: number, 
+  options?: { 
+    showVAT?: boolean; 
+    vatRate?: number; 
+    language?: string;
+  }
+): string => {
+  const { showVAT = true, vatRate = 0.25, language = 'sv' } = options || {};
+  
+  // Apply VAT if showVAT is true
+  const finalPrice = showVAT ? price * (1 + vatRate) : price;
+  
+  // Map language to locale
+  const localeMap: Record<string, { locale: string; currency: string }> = {
+    sv: { locale: 'sv-SE', currency: 'SEK' },
+    en: { locale: 'en-GB', currency: 'EUR' },
+    de: { locale: 'de-DE', currency: 'EUR' },
+    fr: { locale: 'fr-FR', currency: 'EUR' },
+  };
+  
+  const { locale, currency } = localeMap[language] || localeMap.sv;
+  
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: 'SEK',
-  }).format(price);
+    currency,
+  }).format(finalPrice);
 };
 
 /**

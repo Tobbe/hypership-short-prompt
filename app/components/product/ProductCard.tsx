@@ -6,6 +6,7 @@ import { Product } from "@/app/types";
 import { formatPrice, truncateText } from "@/app/lib/utils";
 import Button from "@/app/components/ui/Button";
 import { useCart } from "@/app/lib/cartContext";
+import { useSettings } from "@/app/lib/settingsContext";
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
+  const { showVAT, vatRate, language } = useSettings();
   const { id, name, description, price, imageUrl, category, inStock } = product;
 
   const productLink = `/${category === "performance" ? "performance-parts" : "aftermarket-parts"}/${id}`;
@@ -47,7 +49,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         <div className="mt-auto">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-lg font-bold">{formatPrice(price)}</span>
+            <span className="text-lg font-bold">{formatPrice(price, { showVAT, vatRate, language })}</span>
             {product.compatibility && (
               <span className="text-xs text-gray-500">
                 {product.compatibility.length > 1 

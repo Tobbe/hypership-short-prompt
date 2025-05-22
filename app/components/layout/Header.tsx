@@ -6,6 +6,7 @@ import { useCart } from "@/app/lib/cartContext";
 import Container from "@/app/components/ui/Container";
 import MegaMenu from "./MegaMenu";
 import MobileNavigation from "./MobileNavigation";
+import SettingsControls from "@/app/components/ui/SettingsControls";
 import { mainNavigation } from "@/app/lib/navigationData";
 
 export default function Header() {
@@ -60,6 +61,11 @@ export default function Header() {
                 </svg>
               </div>
             </div>
+          </div>
+
+          {/* Settings Controls (VAT Toggle & Language Switcher) */}
+          <div className="hidden lg:flex">
+            <SettingsControls />
           </div>
 
           {/* Cart Icon */}
