@@ -6,6 +6,7 @@ import { useCart } from "@/app/lib/cartContext";
 import Container from "@/app/components/ui/Container";
 import MegaMenu from "./MegaMenu";
 import MobileNavigation from "./MobileNavigation";
+import UserMenu from "./UserMenu";
 import SettingsControls from "@/app/components/ui/SettingsControls";
 import { mainNavigation } from "@/app/lib/navigationData";
 
@@ -68,8 +69,10 @@ export default function Header() {
             <SettingsControls />
           </div>
 
-          {/* Cart Icon */}
-          <div className="flex items-center">
+          {/* User Menu & Cart Icon */}
+          <div className="flex items-center space-x-4">
+            <UserMenu />
+            
             <Link
               href="/cart"
               className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors"
