@@ -1,0 +1,23 @@
+# Project Context for Hypership Template
+
+## Framework
+
+- Next.js with App Router
+
+## Important Notes
+
+- Providers.tsx is a protected file that must remain unchanged
+- Providers.tsx is used by Hypership to provide auth, analytics, and events to the app
+- Create modular React components instead of monolithic page files
+- Break down complex UI into reusable components
+- Place components in appropriate directories based on their scope and usage
+- If you use external images, make sure you add the top level domain of that image to next.config.ts in the domains array.
+
+## Technologies
+
+- TailwindCSS 3.4.1
+
+## Process Requirements
+
+- Run `npm run lint` at the end to check for issues
+- Do not run `npm run dev` at any time.
