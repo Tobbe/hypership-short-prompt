@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+import Header from "@/app/components/layout/Header";
+import Footer from "@/app/components/layout/Footer";
+import { CartProvider } from "@/app/lib/cartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hypership + Next.js App",
-  description: "A Next.js app powered by Hypership",
+  title: "ACM - Performance & Aftermarket Car Parts",
+  description: "Your trusted source for performance and aftermarket car parts, and professional service.",
+  metadataBase: new URL("https://acm.se"),
 };
 
 export default function RootLayout({
@@ -26,9 +30,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-gray-50`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <CartProvider>
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </CartProvider>
+        </Providers>
       </body>
     </html>
   );
