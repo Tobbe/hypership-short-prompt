@@ -14,7 +14,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full">
         <Image
-          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7"
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
           alt="ACM Performance & Aftermarket Parts"
           fill
           priority
@@ -58,7 +58,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
               <div className="relative h-48">
                 <Image
-                  src="https://images.unsplash.com/photo-1600661653561-629509216228"
+                  src="https://images.unsplash.com/photo-1600661653561-629509216228?auto=format&fit=crop&w=1200&q=80"
                   alt="Performance Parts"
                   fill
                   className="object-cover"
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
               <div className="relative h-48">
                 <Image
-                  src="https://images.unsplash.com/photo-1563136060-eed9c802c8e9"
+                  src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
                   alt="Aftermarket Parts"
                   fill
                   className="object-cover"
@@ -106,7 +106,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
               <div className="relative h-48">
                 <Image
-                  src="https://images.unsplash.com/photo-1530046339915-78cc6c4812a2"
+                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80"
                   alt="Service Booking"
                   fill
                   className="object-cover"
