@@ -194,3 +194,15 @@ export const getProductById = (id: string): Product | undefined => {
 export const getFeaturedProducts = (): Product[] => {
   return getAllProducts().filter(product => product.featured);
 };
+
+// Helper function to get discounted products with their discount percentages
+export const getDiscountedProducts = (): { product: Product; discountPercentage: number }[] => {
+  // For demonstration purposes, we're applying discounts to specific products
+  // In a real application, this might come from a database or API
+  return [
+    { product: getProductById("perf-001")!, discountPercentage: 15 },
+    { product: getProductById("perf-003")!, discountPercentage: 20 },
+    { product: getProductById("after-001")!, discountPercentage: 10 },
+    { product: getProductById("after-005")!, discountPercentage: 25 },
+  ];
+};

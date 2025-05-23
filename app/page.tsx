@@ -3,10 +3,12 @@ import Image from "next/image";
 import Container from "@/app/components/ui/Container";
 import Button from "@/app/components/ui/Button";
 import ProductGrid from "@/app/components/product/ProductGrid";
-import { getFeaturedProducts } from "@/app/lib/mockData";
+import DiscountedProductGrid from "@/app/components/product/DiscountedProductGrid";
+import { getFeaturedProducts, getDiscountedProducts } from "@/app/lib/mockData";
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
+  const discountedProducts = getDiscountedProducts();
 
   return (
     <div className="flex flex-col">
@@ -124,6 +126,26 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Special Offers - Discounted Products */}
+      <section className="py-16 bg-red-50">
+        <Container>
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Special Offers
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Limited-time discounts on select performance and aftermarket parts. Don't miss these deals!
+          </p>
+          <DiscountedProductGrid discountedProducts={discountedProducts} />
+          <div className="text-center mt-8">
+            <Link href="/performance-parts">
+              <Button variant="primary" size="lg">
+                View All Deals
+              </Button>
+            </Link>
           </div>
         </Container>
       </section>

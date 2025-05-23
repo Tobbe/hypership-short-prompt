@@ -8,19 +8,31 @@ import Button from "@/app/components/ui/Button";
 import { useCart } from "@/app/lib/cartContext";
 import { useSettings } from "@/app/lib/settingsContext";
 
-interface ProductCardProps {
+interface DiscountedProductCardProps {
   product: Product;
+  discountPercentage: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function DiscountedProductCard({ 
+  product, 
+  discountPercentage 
+}: DiscountedProductCardProps) {
   const { addItem } = useCart();
   const { showVAT, vatRate, language } = useSettings();
   const { id, name, description, price, imageUrl, category, inStock } = product;
 
   const productLink = `/${category === "performance" ? "performance-parts" : "aftermarket-parts"}/${id}`;
+  
+  // Calculate discounted price
+  const discountedPrice = price * (1 - discountPercentage / 100);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col relative">
+      {/* Discount Badge */}
+      <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
+        {discountPercentage}% OFF
+      </div>
+      
       <div className="relative h-48 w-full">
         <Image
           src={imageUrl}
@@ -48,8 +60,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
         
         <div className="mt-auto">
-          <div className="mb-3">
-            <span className="text-lg font-bold block">{formatPrice(price, { showVAT, vatRate, language })}</span>
+          <div className="flex flex-col mb-3">
+            <span className="text-lg font-bold text-red-600">
+              {formatPrice(discountedPrice, { showVAT, vatRate, language })}
+            </span>
+            <span className="text-sm text-gray-500 line-through">
+              {formatPrice(price, { showVAT, vatRate, language })}
+            </span>
           </div>
           
           <div className="flex space-x-2">
