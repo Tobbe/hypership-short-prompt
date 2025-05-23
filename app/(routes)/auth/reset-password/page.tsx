@@ -4,12 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Container from "@/app/components/ui/Container";
 import Button from "@/app/components/ui/Button";
+import { useAuth } from "@/app/lib/authContext";
 
 export default function ResetPasswordPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const { resetPassword } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -27,19 +30,21 @@ export default function ResetPasswordPage() {
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        console.log("Password reset requested for:", email);
-        setIsSubmitting(false);
+      try {
+        await resetPassword(email);
         setIsSubmitted(true);
-        // In a real implementation, you would send a password reset email
-      }, 1000);
+      } catch (error) {
+        console.error("Password reset request failed:", error);
+        setError("Failed to request password reset. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 

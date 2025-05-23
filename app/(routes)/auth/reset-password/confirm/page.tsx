@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Container from "@/app/components/ui/Container";
 import Button from "@/app/components/ui/Button";
+import { useAuth } from "@/app/lib/authContext";
 
 export default function ResetPasswordConfirmPage() {
   const searchParams = useSearchParams();
@@ -19,8 +20,10 @@ export default function ResetPasswordConfirmPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [tokenError, setTokenError] = useState(false);
 
+  const { updatePassword } = useAuth();
+
   useEffect(() => {
-    // In a real implementation, you would validate the token here
+    // Validate the token
     if (!token) {
       setTokenError(true);
     }
@@ -60,20 +63,21 @@ export default function ResetPasswordConfirmPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (validateForm()) {
+    if (validateForm() && token) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        console.log("Password reset with token:", token);
-        console.log("New password:", formData.password);
-        setIsSubmitting(false);
+      try {
+        await updatePassword(token, formData.password);
         setIsSubmitted(true);
-        // In a real implementation, you would send the new password to the server
-      }, 1000);
+      } catch (error) {
+        console.error("Password update failed:", error);
+        setErrors({ form: "Failed to update password. Please try again or request a new reset link." });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -164,6 +168,12 @@ export default function ResetPasswordConfirmPage() {
                   <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
                 )}
               </div>
+
+              {errors.form && (
+                <div className="bg-red-50 border border-red-200 text-red-800 rounded-md p-3">
+                  <p className="text-sm">{errors.form}</p>
+                </div>
+              )}
 
               <div>
                 <Button

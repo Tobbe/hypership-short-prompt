@@ -12,6 +12,8 @@
     "@hypership/analytics-react": "^1.1.0",
     "@hypership/auth-react": "^1.1.0",
     "@hypership/events-react": "^1.0.0",
+    "@medusajs/js-sdk": "^2.8.3",
+    "@medusajs/types": "^2.8.3",
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
