@@ -3,7 +3,6 @@ import Image from "next/image";
 import Container from "@/app/components/ui/Container";
 import Button from "@/app/components/ui/Button";
 import ProductGrid from "@/app/components/product/ProductGrid";
-import DiscountedProductGrid from "@/app/components/product/DiscountedProductGrid";
 import { getFeaturedProducts, getDiscountedProducts } from "@/app/lib/mockData";
 
 export default function Home() {
@@ -139,7 +138,7 @@ export default function Home() {
           <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
             Limited-time discounts on select performance and aftermarket parts. Don't miss these deals!
           </p>
-          <DiscountedProductGrid discountedProducts={discountedProducts} />
+          <ProductGrid products={discountedProducts} />
           <div className="text-center mt-8">
             <Link href="/performance-parts">
               <Button variant="primary" size="lg">
