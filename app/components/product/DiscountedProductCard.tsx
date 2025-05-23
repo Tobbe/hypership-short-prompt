@@ -27,9 +27,13 @@ export default function DiscountedProductCard({
   const discountedPrice = price * (1 - discountPercentage / 100);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col relative">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col relative hover:shadow-lg transition-shadow group">
+      <Link href={productLink} className="absolute inset-0 z-10">
+        <span className="sr-only">View {name} details</span>
+      </Link>
+      
       {/* Discount Badge */}
-      <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
+      <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full z-20">
         {discountPercentage}% OFF
       </div>
       
@@ -42,17 +46,15 @@ export default function DiscountedProductCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {!inStock && (
-          <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded z-20">
             Out of Stock
           </div>
         )}
       </div>
       
       <div className="p-4 flex-grow flex flex-col">
-        <h3 className="text-lg font-semibold mb-1">
-          <Link href={productLink} className="hover:text-blue-600 transition-colors">
-            {name}
-          </Link>
+        <h3 className="text-lg font-semibold mb-1 group-hover:text-blue-600 transition-colors">
+          {name}
         </h3>
         
         <p className="text-gray-600 text-sm mb-4 flex-grow">
@@ -69,20 +71,19 @@ export default function DiscountedProductCard({
             </span>
           </div>
           
-          <div className="flex space-x-2">
+          <div className="relative z-20">
             <Button 
               variant="primary" 
               fullWidth 
-              onClick={() => addItem(product)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                addItem(product);
+              }}
               disabled={!inStock}
             >
               Add to Cart
             </Button>
-            <Link href={productLink} className="block">
-              <Button variant="outline" className="w-full">
-                Details
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
